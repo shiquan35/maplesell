@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.listing, { as: "buyer", foreignKey: "buyerId" });
+      this.hasMany(models.listing, { as: "seller", foreignKey: "sellerId" });
     }
   }
   user.init(
@@ -20,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "user",
+      // tableName: "users",
       underscored: true,
     }
   );
