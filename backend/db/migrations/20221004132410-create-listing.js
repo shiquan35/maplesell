@@ -16,16 +16,32 @@ module.exports = {
         type: Sequelize.STRING,
       },
       buyer_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       seller_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "users",
+          key: "id",
+        },
       },
       item_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "items",
+          key: "id",
+        },
       },
       shop_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+        references: {
+          model: "shops",
+          key: "id",
+        },
       },
       created_at: {
         allowNull: false,
