@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasMany(models.listing, { as: "buyer", foreignKey: "buyerId" });
       this.hasMany(models.listing, { as: "seller", foreignKey: "sellerId" });
+      this.belongsToMany(models.item, { through: "inventories" });
     }
   }
   user.init(
