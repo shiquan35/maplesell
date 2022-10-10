@@ -9,8 +9,15 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        type: Sequelize.STRING,
+      },
       price: {
         type: Sequelize.INTEGER,
+      },
+      bought: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       description: {
         type: Sequelize.STRING,
@@ -29,17 +36,17 @@ module.exports = {
           key: "id",
         },
       },
-      item_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "items",
-          key: "id",
-        },
-      },
       shop_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "shops",
+          key: "id",
+        },
+      },
+      category_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "categories",
           key: "id",
         },
       },
