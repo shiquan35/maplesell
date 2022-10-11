@@ -9,9 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasMany(models.listing, { as: "buyer", foreignKey: "buyerId" });
-      this.hasMany(models.listing, { as: "seller", foreignKey: "sellerId" });
-      this.belongsToMany(models.item, { through: "inventories" });
+      this.hasMany(models.listing, { as: "buyer", foreignKey: "buyer_id" });
+      this.hasMany(models.listing, { as: "seller", foreignKey: "seller_id" });
     }
   }
   user.init(
