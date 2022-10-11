@@ -12,10 +12,10 @@ const UserController = require("./controllers/userController");
 
 //importing DB
 const db = require("./db/models/index");
-const { listing, user } = db;
+const { listing, category, shop, user } = db;
 
 //initializing controlers
-const listingsController = new ListingsController(listing);
+const listingsController = new ListingsController(listing, category, shop);
 const usersController = new UserController(user);
 
 //initializing controllers
