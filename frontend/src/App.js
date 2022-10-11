@@ -1,5 +1,5 @@
 import "./App.css";
-import Home from "./components/home";
+// import Home from "./components/home";
 import LoginButton from "./components/login";
 import LogoutButton from "./components/logout";
 import Profile from "./components/profile";

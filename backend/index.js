@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 //importing Routers
 const ListingsRouter = require("./routers/listingRouter");
@@ -26,16 +26,16 @@ const app = express();
 app.use(cors());
 
 
-const { auth } = require("express-oauth2-jwt-bearer");
+// const { auth } = require("express-oauth2-jwt-bearer");
 
-const checkJwt = auth({
-  audience: "https://maplesell/api",
-  issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
-});
+// const checkJwt = auth({
+//   audience: "https://maplesell/api",
+//   issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
+// });
 
-app.get("/", checkJwt, (req, res) => {
-  res.send("Hello, World!");
-});
+// app.get("/", checkJwt, (req, res) => {
+//   res.send("Hello, World!");
+// });
 
 //enable reading JSON request bodies
 app.use(express.json());
