@@ -22,7 +22,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      buyer_id: {
+      buyerId: {
         type: Sequelize.INTEGER,
         references: {
           model: "users",
@@ -50,11 +50,11 @@ module.exports = {
           key: "id",
         },
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
