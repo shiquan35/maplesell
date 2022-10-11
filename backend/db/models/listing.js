@@ -9,16 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.user, { as: "buyer", foreignKey: "buyerId" });
-      this.belongsTo(models.user, { as: "seller", foreignKey: "sellerId" });
-      this.belongsTo(models.shop, { as: "shop", foreignKey: "shopId" });
-      this.belongsTo(models.item, { as: "item", foreignKey: "itemId" });
+      this.belongsTo(models.user, { as: "buyer", foreignKey: "buyer_id" });
+      this.belongsTo(models.user, { as: "seller", foreignKey: "seller_id" });
+      this.belongsTo(models.shop, { as: "shop", foreignKey: "shop_id" });
       this.hasOne(models.photo, { as: "photo", foreignKey: "photo" });
+      this.belongsTo(models.category, {
+        as: "category",
+        foreignKey: "category_id",
+      });
     }
   }
   listing.init(
     {
+      name: DataTypes.STRING,
       price: DataTypes.INTEGER,
+      bought: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
       description: DataTypes.STRING,
       buyerId: {
         type: DataTypes.INTEGER,
@@ -34,17 +42,17 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      itemId: {
-        type: DataTypes.INTEGER,
-        references: {
-          model: "items",
-          key: "id",
-        },
-      },
       shopId: {
         type: DataTypes.INTEGER,
         references: {
           model: "shops",
+          key: "id",
+        },
+      },
+      categoryId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: "categories",
           key: "id",
         },
       },
