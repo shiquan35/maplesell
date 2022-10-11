@@ -15,9 +15,8 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-  photo.init(
-    {
-      listing_id: {
+  photo.init({
+    listingId: {
         type: DataTypes.INTEGER,
         references: {
           model: "listings",

@@ -22,6 +22,7 @@ const usersController = new UserController(user);
 const listingsRouter = new ListingsRouter(listingsController).routes();
 const usersRouter = new UsersRouter(usersController).routes();
 
+
 const app = express();
 app.use(cors());
 
