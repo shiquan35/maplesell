@@ -9,13 +9,20 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
+      name: {
+        type: Sequelize.STRING,
+      },
       price: {
         type: Sequelize.INTEGER,
+      },
+      bought: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
       },
       description: {
         type: Sequelize.STRING,
       },
-      buyer_id: {
+      buyerId: {
         type: Sequelize.INTEGER,
         references: {
           model: "users",
@@ -29,13 +36,6 @@ module.exports = {
           key: "id",
         },
       },
-      item_id: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "items",
-          key: "id",
-        },
-      },
       shop_id: {
         type: Sequelize.INTEGER,
         references: {
@@ -43,11 +43,18 @@ module.exports = {
           key: "id",
         },
       },
-      created_at: {
+      category_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: "categories",
+          key: "id",
+        },
+      },
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
       },
