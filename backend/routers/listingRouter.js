@@ -7,10 +7,10 @@ class ListingsRouter {
   }
   routes() {
     // we will insert routes into here later on
-    router.get("/", this.controller.getAll.bind(this.controller));
+    router.get("/", this.controller.getShop.bind(this.controller));
     router.post("/", this.controller.insertOne.bind(this.controller));
-    router.get("/:shopId", this.controller.getShop.bind(this.controller));
-    router.get("/:listingId", this.controller.getOne.bind(this.controller));
+    router.get("/:shopId", this.controller.getShopItem.bind(this.controller));
+    router.get("/:shopId/:listingId", this.controller.getOne.bind(this.controller));
     router.post("/:listingId", this.controller.soldOne.bind(this.controller));
     return router;
   }
