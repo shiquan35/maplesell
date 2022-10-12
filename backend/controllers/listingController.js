@@ -1,4 +1,5 @@
 const BaseController = require("./baseController");
+const { Op } = require("sequelize");
 
 class ListingController extends BaseController {
   constructor(model, categoryModel, shopModel) {
@@ -7,22 +8,29 @@ class ListingController extends BaseController {
     this.shopModel = shopModel;
   }
 
-  // getting items from a specfic shop
-  // filter boolean = false to show the remaining items left
-  async getShop(req, res) {
+
+  async getShop (req, res) {
+    try {
+      const output = await this.shopModel.findAll();
+      return res.json(output);
+    }
+    catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // get shop items
+  async getShopItem (req, res) {
     const shopId = req.params.shopId;
     try {
-      console.log("getting items...");
-      if (shopId) {
-        const output = await this.model.findAll({
-          where: {
-            boolean: false,
-          },
-        });
-        return res.json(output);
-      }
-      console.log("got items!");
-    } catch (err) {
+      const output = await this.model.findAll({
+        where: {
+          shop_id: shopId
+        }
+      });
+      return res.json(output);
+    }
+    catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
@@ -31,10 +39,18 @@ class ListingController extends BaseController {
   // rmb that the params for the router is :listingsId
   // ensure that it is the listingsId
   async getOne(req, res) {
+    const shopId = req.params.shopId;
     const listingId = req.params.listingId;
     try {
       console.log("getOne works");
-      const output = await this.model.findByPk(listingId);
+      const output = await this.model.findAll({
+        where: {
+          [Op.and]: [
+            { shop_id:  shopId },
+            { id: listingId}
+          ]
+        }
+      });
       return res.json(output);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
