@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const PORT = process.env.PORT;
+const PORT = 3000;
 
 //importing Routers
 const ListingsRouter = require("./routers/listingRouter");
@@ -24,7 +24,6 @@ const usersRouter = new UsersRouter(usersController).routes();
 
 const app = express();
 app.use(cors());
-
 
 const { auth } = require("express-oauth2-jwt-bearer");
 
