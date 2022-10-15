@@ -22,7 +22,7 @@ module.exports = {
       description: {
         type: Sequelize.STRING,
       },
-      buyerId: {
+      buyer_id: {
         type: Sequelize.INTEGER,
         references: {
           model: "users",
