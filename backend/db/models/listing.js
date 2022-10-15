@@ -25,28 +25,28 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: false,
       },
       description: DataTypes.STRING,
-      buyerId: {
+      buyer_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "users",
           key: "id",
         },
       },
-      sellerId: {
+      seller_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "users",
           key: "id",
         },
       },
-      shopId: {
+      shop_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "shops",
           key: "id",
         },
       },
-      categoryId: {
+      category_id: {
         type: DataTypes.INTEGER,
         references: {
           model: "categories",
@@ -57,7 +57,6 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "listing",
-      underscored: true,
     }
   );
   return listing;
