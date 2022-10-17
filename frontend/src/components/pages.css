@@ -1,0 +1,174 @@
+.homeContainer {
+  background-image: url("./fm1.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 900px;
+}
+
+.storeImg {
+  height: 20%;
+}
+
+.shop {
+  margin: 100px;
+  background-image: url("./store2.png");
+  height: 180px;
+  width: 180px;
+  background-repeat: no-repeat;
+}
+
+h3 {
+  text-align: center;
+  position: relative;
+  right: 18px;
+  top: 5px;
+}
+
+.row1 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 60px;
+}
+
+.row2 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 160px;
+  right: 190px;
+}
+
+.row3 {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  bottom: 210px;
+  right: 120px;
+}
+
+.shopBackground {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  height: 100%;
+  align-items: center;
+}
+
+.mesos {
+  height: 30px;
+  width: 30px;
+}
+
+.shopDiv {
+  background-color: beige;
+  margin: 10px;
+  width: 400px;
+  height: 500px;
+  border: 4px solid beige;
+  border-radius: 8px;
+}
+
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+  background-color: beige;
+}
+
+.employee {
+  position: relative;
+  left: 40px;
+}
+
+.divButtons {
+  float: right;
+  flex-direction: column;
+}
+
+.shopButton {
+  background-image: linear-gradient(rgb(207, 126, 61), rgb(222, 166, 133));
+  text-align: center;
+  width: 150px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(255, 222, 169);
+  margin: 7px;
+}
+
+.shopItems {
+  height: 420px;
+  overflow-y: scroll;
+  white-space: normal;
+}
+
+.userDiv {
+  background-color: rgb(99, 3, 3);
+  margin: 10px;
+  width: 350px;
+  height: 500px;
+  border: 4px solid beige;
+  border-radius: 8px;
+}
+
+.userItems {
+  height: 420px;
+  overflow-y: scroll;
+  white-space: normal;
+  /* overflow: scroll; */
+}
+
+.itemName {
+  background-color: rgba(165, 211, 248, 0.774);
+  width: 95%;
+  padding-bottom: 1px;
+  margin: 2px;
+  color: #000;
+  height: 30px;
+  font-size: large;
+}
+
+.price {
+  background-color: rgba(165, 211, 248, 0.774);
+  width: 95%;
+  display: flex;
+  height: 30px;
+  padding-top: 1px;
+  margin: 2px;
+}
+
+.priceText {
+  position: relative;
+  bottom: 10px;
+  color: black;
+}
+
+.clickedColour {
+  background-color: rgba(126, 164, 196, 0.774);
+}
+
+.itemDisplay {
+  position: absolute;
+  background-color: black;
+  z-index: 9;
+  margin-left: 30px;
+  opacity: 0.85;
+  background-color: rgb(83, 84, 132);
+  width: 500px;
+}
+
+.mesos {
+  padding-left: 5px;
+}
+
+p {
+  padding-left: 5px;
+}

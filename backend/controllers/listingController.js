@@ -2,10 +2,13 @@ const BaseController = require("./baseController");
 const { Op } = require("sequelize");
 
 class ListingController extends BaseController {
-  constructor(model, categoryModel, shopModel) {
+  constructor(model, categoryModel, shopModel, photoModel) {
     super(model);
     this.categoryModel = categoryModel;
     this.shopModel = shopModel;
+
+    // get photos
+    this.photoModel = photoModel;
   }
 
 
@@ -28,6 +31,17 @@ class ListingController extends BaseController {
           shop_id: shopId
         }
       });
+      return res.json(output);
+    }
+    catch (err) {
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  // get photo URLs
+  async getPhoto (req, res) {
+    try {
+      const output = await this.photoModel.findAll();
       return res.json(output);
     }
     catch (err) {

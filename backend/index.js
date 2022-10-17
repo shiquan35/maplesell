@@ -12,10 +12,10 @@ const UserController = require("./controllers/userController");
 
 //importing DB
 const db = require("./db/models/index");
-const { listing, category, shop, user } = db;
+const { listing, category, shop, user, photo } = db;
 
 //initializing controlers
-const listingsController = new ListingsController(listing, category, shop);
+const listingsController = new ListingsController(listing, category, shop, photo);
 const usersController = new UserController(user);
 
 //initializing controllers
@@ -25,16 +25,16 @@ const usersRouter = new UsersRouter(usersController).routes();
 const app = express();
 app.use(cors());
 
-const { auth } = require("express-oauth2-jwt-bearer");
+// const { auth } = require("express-oauth2-jwt-bearer");
 
-const checkJwt = auth({
-   audience: "https://maplesell/api",
-   issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
- });
+// const checkJwt = auth({
+//    audience: "https://maplesell/api",
+//    issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
+//  });
 
- app.get("/", checkJwt, (req, res) => {
-   res.send("Hello, World!");
- });
+//  app.get("/", checkJwt, (req, res) => {
+//    res.send("Hello, World!");
+//  });
 
 //enable reading JSON request bodies
 app.use(express.json());

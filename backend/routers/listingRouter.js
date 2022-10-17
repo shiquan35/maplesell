@@ -12,6 +12,9 @@ class ListingsRouter {
     router.get("/:shopId", this.controller.getShopItem.bind(this.controller));
     router.get("/:shopId/:listingId", this.controller.getOne.bind(this.controller));
     router.post("/:listingId", this.controller.soldOne.bind(this.controller));
+
+    // get photos
+    router.get("/photo", this.controller.getPhoto.bind(this.controller))
     return router;
   }
 }
