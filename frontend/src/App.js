@@ -1,17 +1,15 @@
 import "./App.css";
-// import Home from "./components/home";
-import LoginButton from "./components/login";
-import LogoutButton from "./components/logout";
-import Profile from "./components/profile";
+import LoginPage from "./components/loginPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Profile />
-        <LoginButton />
-        <LogoutButton />
-      </header>
+    <div>
+      {/* <header className="App-header"> */}
+      {/* <audio src={mapleaudio} controls className="music">
+          <embed src={mapleaudio} autostart="true" width="300" height="90" />
+        </audio> */}
+      {/* </header> */}
+      <LoginPage />
     </div>
   );
 }

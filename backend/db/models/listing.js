@@ -12,7 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       this.belongsTo(models.user, { as: "buyer", foreignKey: "buyer_id" });
       this.belongsTo(models.user, { as: "seller", foreignKey: "seller_id" });
       this.belongsTo(models.shop, { as: "shop", foreignKey: "shop_id" });
-      this.hasOne(models.photo, { as: "photo", foreignKey: "photo" });
       this.belongsTo(models.category, { as: "category", foreignKey: "category_id" });
     }
   }
@@ -53,6 +52,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
+      photo: DataTypes.STRING,
     },
     {
       sequelize,
