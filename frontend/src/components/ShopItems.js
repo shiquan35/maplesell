@@ -59,7 +59,9 @@ const ShopItems = ({ shopItem }) => {
 
       {isHovering && (
           <div className="itemDisplay">
-            <Item listingID={hoverDiv}/>
+            {/* <Item listingID={hoverDiv}/> */}
+            <p>{shopItem.name}</p>
+            <p>{shopItem.description}</p>
           </div>
         )}
     </>

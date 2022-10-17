@@ -82,3 +82,15 @@ const AllShops = () => {
 };
 
 export default AllShops;
+
+// step 1
+// const {users} = auth0();
+
+// verify if logged in user (currUser) exists in our USERS table --> first GET request to obtain list of users
+
+// step 2: GET request to USERS table --> store in "users"
+
+
+// step 3
+// 3a. store names of users in an array called "arrUsers"
+// 3b. console.log(arrUsers.includes(currUser))
