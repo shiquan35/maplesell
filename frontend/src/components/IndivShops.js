@@ -9,6 +9,7 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContentText";
+import {clickedDiv, clicked, clickToNull} from "./ShopItems";
 
 const IndivShops = () => {
   const [buyingPopup, setBuyingPopup] = useState(false);
@@ -32,11 +33,14 @@ const IndivShops = () => {
   });
 
   const handleBuyingConfirmation = () => {
+    // console.log("clicked div is",clickedDiv);
     setBuyingPopup(true);
+    // clickToNull();
   };
 
   const handleClose = () => {
     setBuyingPopup(false);
+    window.reload();
   };
 
   const handleBuy = async () => {
@@ -49,6 +53,7 @@ const IndivShops = () => {
       .then((res) => console.log("Posted", res))
       .catch((err) => console.log(err));
 
+    clickToNull();
     navigate(`/home/${shopId}`);
   };
 
@@ -74,6 +79,7 @@ const IndivShops = () => {
                 <div className="divButtons">
                   <button
                     onClick={() => {
+                      clickToNull();
                       navigate("/new");
                     }}
                     className="shopButton"
@@ -86,6 +92,7 @@ const IndivShops = () => {
                   <button
                     className="shopButton"
                     onClick={() => {
+                      clickToNull();
                       navigate("/home");
                     }}
                   >
