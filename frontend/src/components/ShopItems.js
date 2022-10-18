@@ -38,23 +38,28 @@ const ShopItems = ({ shopItem }) => {
   return (
     <>
     {console.log(clicked)}
+    {console.log("currSelectedDiv:", currSelectedDiv)}
+    {console.log("clickedDiv:", clickedDiv)}
       <div
         className="items"
         onMouseOver={() => setIsHovering(true)}
         onMouseOut={() => setIsHovering(false)}
         onClick={handleClick}
       >
-        {console.log("currSelectedDiv:", currSelectedDiv)}
-        {console.log("clickedDiv:", clickedDiv)}
-        <div className={`itemName ${clicked ? "clickedColour" : ""}`}>
-          {/* <img src={shopItem.photo} alt={shopItem.name} /> */}
-          <p className="itemText">{shopItem.name}</p>
+        <div className="itemLeft">
+          <img src={shopItem.photo} alt={shopItem.name} className="itemPhoto"/>
         </div>
+        <div className="itemRight">
+          <div className={`itemName ${clicked ? "clickedColour" : ""}`}>
+            
+            <p className="itemText">{shopItem.name}</p>
+          </div>
 
-        <div className={`price ${clicked ? "clickedColour" : ""}`}>
-          <img src={mesos} className="mesos" alt="mesos: " />
-          <p className="priceText">{shopItem.price} mesos</p>
-          <br />
+          <div className={`price ${clicked ? "clickedColour" : ""}`}>
+            <img src={mesos} className="mesos" alt="mesos: " />
+            <p className="priceText">{shopItem.price} mesos</p>
+            <br />
+          </div>
         </div>
       </div>
 
