@@ -2,6 +2,7 @@
   background-image: url("./fm1.png");
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
   height: 900px;
 }
 
@@ -27,24 +28,25 @@ h3 {
 .row1 {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 60px;
+  position: absolute;
+  left: 15%;
+  top: -9%;
 }
 
 .row2 {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 160px;
-  right: 190px;
+  position: absolute;
+  left: 5%;
+  top: 19%;
 }
 
 .row3 {
   display: flex;
   justify-content: center;
-  position: relative;
-  bottom: 210px;
-  right: 120px;
+  position: absolute;
+  left: 15%;
+  top: 51%;
 }
 
 .shopBackground {
@@ -85,14 +87,19 @@ h3 {
   background-color: beige;
 }
 
-.employee {
+.employeeContainer {
   position: relative;
-  left: 40px;
 }
 
-.divButtons {
-  float: right;
+.employee {
+  position: absolute;
+  left: 7%;
+}
+
+.buttonContainer {
+  display: flex;
   flex-direction: column;
+  margin-top: 4px;
 }
 
 .shopButton {
@@ -101,7 +108,7 @@ h3 {
   width: 150px;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: rgb(255, 222, 169);
-  margin: 7px;
+  margin: 2px;
 }
 
 .shopItems {
@@ -171,4 +178,8 @@ h3 {
 
 p {
   padding-left: 5px;
+}
+
+.formFonts {
+  color: #000;
 }

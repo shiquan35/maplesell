@@ -11,60 +11,34 @@ class ListingController extends BaseController {
     this.photoModel = photoModel;
   }
 
-
-  async getShop (req, res) {
+  async getShop(req, res) {
     try {
       const output = await this.shopModel.findAll();
       return res.json(output);
-    }
-    catch (err) {
+    } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
   // get shop items
-  async getShopItem (req, res) {
+  async getShopItem(req, res) {
     const shopId = req.params.shopId;
     try {
       const output = await this.model.findAll({
         where: {
-          shop_id: shopId
-        }
+          [Op.and]: [{ shop_id: shopId }, { bought: false }],
+        },
       });
       return res.json(output);
-    }
-    catch (err) {
+    } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
   }
 
   // get photo URLs
-  async getPhoto (req, res) {
+  async getPhoto(req, res) {
     try {
       const output = await this.photoModel.findAll();
-      return res.json(output);
-    }
-    catch (err) {
-      return res.status(400).json({ error: true, msg: err });
-    }
-  }
-
-  // when the user clicks on a specific item
-  // rmb that the params for the router is :listingsId
-  // ensure that it is the listingsId
-  async getOne(req, res) {
-    const shopId = req.params.shopId;
-    const listingId = req.params.listingId;
-    try {
-      console.log("getOne works");
-      const output = await this.model.findAll({
-        where: {
-          [Op.and]: [
-            { shop_id:  shopId },
-            { id: listingId}
-          ]
-        }
-      });
       return res.json(output);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
@@ -76,7 +50,11 @@ class ListingController extends BaseController {
   async soldOne(req, res) {
     const listingId = req.params.listingId;
     try {
-      const soldItem = await this.model.findByPk(listingId);
+      const soldItem = await this.model.findAll({
+        where: {
+          listing_id: listingId,
+        },
+      });
       console.log("selling...");
       if (soldItem) {
         // if sold, update boolean to true
@@ -97,38 +75,22 @@ class ListingController extends BaseController {
 
   // allowing users to add their own listings
   async insertOne(req, res) {
-    const { name, price, description, selectedShopId, selectedCategoryId } =
-      req.body;
+    const { name, price, description, category_id, shop_id } = req.body;
 
     try {
       const newListing = await this.model.create({
         name: name,
         price: price,
         description: description,
+        category_id: category_id,
+        shop_id: shop_id,
       });
 
-      //retrieving the shop and category ids
-      const selectedCategories = await this.categoryModel.findAll({
-        where: {
-          id: selectedCategoryId,
-        },
-      });
-
-      //associate the selected category to the listing
-      const assocCategory = newListing.setCategories(selectedCategories);
-
-      //retrieve the shop id
-      const selectedShop = await this.shopModel.findAll({
-        where: {
-          id: selectedShopId,
-        },
-      });
-
-      //associate to the shop id
-      const assocShop = assocCategory.setShops(selectedShop);
+      console.log(category_id);
+      console.log(shop_id);
 
       //return with res.json
-      return res.json(assocShop);
+      return res.json(newListing);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }
