@@ -5,6 +5,7 @@ import Homepage from "./components/homepage";
 import IndivShops from "./components/IndivShops";
 import Item from "./components/Item";
 import Nothing from "./components/Nothing";
+import ProfilePage from "./components/profilePage";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
       <Route path="/home" element=<Homepage /> />
       <Route path="/home/:shopId" element=<IndivShops /> />
       <Route path="/home/:shopId/:listingId" element=<Item /> />
+      <Route path="/user/:buyerId" element=<ProfilePage /> />
       <Route path="*" element=<Nothing /> />
     </Routes>
   );
