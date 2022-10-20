@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
+import SellForm from "./sellForm";
 
 const SellingForm = () => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const SellingForm = () => {
   const [categoryName, setCategoryName] = useState([]);
   const [shop, setShop] = useState([{}]);
   const [category, setCategory] = useState([]);
+
   const nameRef = useRef();
   const priceRef = useRef();
   const descriptionRef = useRef();
@@ -54,10 +56,8 @@ const SellingForm = () => {
     setShop([e]);
   };
 
-  console.log(shop);
-  console.log(category);
-
   //post request
+  //how to post photos?
   const handleSubmit = async (e) => {
     console.log("submit running");
     e.preventDefault();
@@ -82,7 +82,7 @@ const SellingForm = () => {
       .catch((err) => console.log(err));
     e.target.reset();
     navigate("/home");
-
+    alert("Item listed! congrats!");
     console.log("submit ran");
   };
 
@@ -90,7 +90,7 @@ const SellingForm = () => {
     <>
       <div className="shopBackground">
         <div className="pageContainer">
-          <div className="shopDiv">
+          <div className="sellingFormDiv">
             <button className="shopButton" onClick={() => navigate("/home")}>
               Back to All Shops
             </button>
@@ -99,14 +99,11 @@ const SellingForm = () => {
             </button>
             <form className="formFonts" onSubmit={handleSubmit}>
               <h2>Selling Form</h2>
-              <label>Name:</label>
-              <input ref={nameRef} type="text" required />
-              <br />
-              <label>Price:</label>
-              <input ref={priceRef} type="text" required />
-              <br />
-              <label>Description:</label>
-              <input ref={descriptionRef} type="text" required />
+              <SellForm
+                nameRef={nameRef}
+                priceRef={priceRef}
+                descriptionRef={descriptionRef}
+              />
               <br />
               <label>Class:</label>
               <Select
@@ -120,6 +117,8 @@ const SellingForm = () => {
                 onChange={handleCategorySelect}
                 value={category}
               />
+
+              <br />
               <input className="shopButton" type="submit" value="SELL!" />
             </form>
           </div>

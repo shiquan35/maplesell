@@ -1,10 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import App from "./App";
-import Homepage from "./components/homepage";
-import IndivShops from "./components/IndivShops";
-import Nothing from "./components/Nothing";
-import SellingForm from "./components/sellingForm";
+import Homepage from "./components/pages/homepage";
+import IndivShops from "./components/pages/IndivShops";
+import Nothing from "./components/pages/Nothing";
+import SellingForm from "./components/pages/sellingForm";
 
 const Router = () => {
   return (

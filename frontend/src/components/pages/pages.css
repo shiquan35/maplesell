@@ -1,5 +1,5 @@
 .homeContainer {
-  background-image: url("./fm1.png");
+  background-image: url("../img/fm1.png");
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
@@ -12,7 +12,7 @@
 
 .shop {
   margin: 100px;
-  background-image: url("./store2.png");
+  background-image: url("../img/store2.png");
   height: 180px;
   width: 180px;
   background-repeat: no-repeat;
@@ -76,6 +76,15 @@ h3 {
   margin: 10px;
   width: 400px;
   height: 500px;
+  border: 4px solid beige;
+  border-radius: 8px;
+}
+
+.sellingFormDiv {
+  background-color: beige;
+  margin: 10px;
+  width: 500px;
+  height: 600px;
   border: 4px solid beige;
   border-radius: 8px;
 }

@@ -45,29 +45,18 @@ class ListingController extends BaseController {
     }
   }
 
-  // POST request, (PUT might be possible too)
-  // you are updating a data field here
   async soldOne(req, res) {
-    const listingId = req.params.listingId;
+    const { id, bought } = req.body;
     try {
-      const soldItem = await this.model.findAll({
-        where: {
-          listing_id: listingId,
-        },
-      });
-      console.log("selling...");
-      if (soldItem) {
-        // if sold, update boolean to true
-        await this.model.update(
-          { bought: true },
-          {
-            where: {
-              bought: false,
-            },
-          }
-        );
-      }
-      console.log("sold!");
+      const output = await this.model.update(
+        { bought: bought },
+        {
+          where: {
+            id: id,
+          },
+        }
+      );
+      return res.json(output);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

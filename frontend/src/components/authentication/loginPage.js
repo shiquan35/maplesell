@@ -1,8 +1,8 @@
 import LoginButton from "./loginButton";
 import LogoutButton from "./logoutButton";
 // import Profile from "./profile";
-import mushroom from "./mushroom.gif";
-import mapleaudio from "./mapleaudio.mp3";
+import mushroom from "../img/mushroom.gif";
+import mapleaudio from "../audio/mapleaudio.mp3";
 import "./loginPage.css";
 
 function LoginPage() {

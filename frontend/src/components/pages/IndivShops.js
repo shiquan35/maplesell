@@ -2,19 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ShopItems from "./ShopItems";
-import mesos from "./mesos.png";
-import employee from "./employee.png";
-import Dialog from "@mui/material/Dialog";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContentText";
-import {clickedDiv, clicked, clickToNull} from "./ShopItems";
+import { clickToNull, clickedDiv } from "./ShopItems";
+import mesos from "../img/mesos.png";
+import employee from "../img/employee.png";
+import BuyDialog from "./buyDialog";
 
 const IndivShops = () => {
   const [buyingPopup, setBuyingPopup] = useState(false);
   const [indivShops, setIndivShops] = useState([]);
-  const [photos, setPhotos] = useState([]);
   let { shopId } = useParams();
   const navigate = useNavigate();
 
@@ -33,28 +28,32 @@ const IndivShops = () => {
   });
 
   const handleBuyingConfirmation = () => {
-    // console.log("clicked div is",clickedDiv);
+    console.log({ clickedDiv });
     setBuyingPopup(true);
-    // clickToNull();
   };
 
   const handleClose = () => {
     setBuyingPopup(false);
+    // apparently window reload didnt do anything?
     window.reload();
   };
 
+  //want to do a check to see if user has enough money?
   const handleBuy = async () => {
     let itemStatus = {
+      id: clickedDiv,
       bought: true,
+      //use auth0 hook to get userId? or possible to pass the id here?
+      //buyer_id:
     };
 
     await axios
       .put(`http://localhost:3000/home/${shopId}`, itemStatus)
       .then((res) => console.log("Posted", res))
       .catch((err) => console.log(err));
-
+    navigate(`/home`);
+    alert("Item bought! congrats!");
     clickToNull();
-    navigate(`/home/${shopId}`);
   };
 
   return (
@@ -102,27 +101,11 @@ const IndivShops = () => {
               </div>
             </div>
 
-            <Dialog
-              open={buyingPopup}
-              aria-labelledby="alert-dialog-title"
-              aria-describedby="alert-dialog-description"
-              className="formFonts"
-            >
-              <DialogTitle id="alert-dialog-title">{"Buying?"}</DialogTitle>
-              <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                  Do you really wish to buy this item?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <button className="shopButton" onClick={handleBuy}>
-                  BUY
-                </button>
-                <button className="shopButton" onClick={handleClose}>
-                  CANCEL
-                </button>
-              </DialogActions>
-            </Dialog>
+            <BuyDialog
+              buyingPopup={buyingPopup}
+              handleBuy={handleBuy}
+              handleClose={handleClose}
+            />
 
             <div className="shopItems">{shopItems}</div>
           </div>

@@ -1,30 +1,25 @@
 import React, { useState } from "react";
-import mesos from "./mesos.png";
+import mesos from "../img/mesos.png";
 
 var currSelectedDiv = null; // use this variable to buy item later
 var clickedDiv = null;
 
 const clickToNull = () => {
-    currSelectedDiv = null;
-    clickedDiv = null;
-  }
+  currSelectedDiv = null;
+  clickedDiv = null;
+};
 
 const ShopItems = ({ shopItem }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [clicked, setClicked] = useState(false); //if true, change colour
-  // const [currSelectedDiv , setCurrSelectedDiv] = useState(null);
-  // const [clickedDiv , setClickedDiv] = useState(null);
 
-  // this part keeps detecting even in hover
   const handleClick = () => {
     clickedDiv = shopItem.id;
-    // setClickedDiv(shopItem.id);
+
     if (currSelectedDiv === null) {
       currSelectedDiv = clickedDiv;
-      // setCurrSelectedDiv(clickedDiv);
     } else if (currSelectedDiv === clickedDiv) {
       currSelectedDiv = null;
-      // setCurrSelectedDiv(null);
     } else if (currSelectedDiv !== clickedDiv) {
       console.log(
         `currSelected is ${currSelectedDiv} but clicked on ${clickedDiv}`
@@ -32,14 +27,13 @@ const ShopItems = ({ shopItem }) => {
       return;
     }
     setClicked(!clicked);
-    // clicked = !clicked;
   };
 
   return (
     <>
-    {console.log(clicked)}
-    {console.log("currSelectedDiv:", currSelectedDiv)}
-    {console.log("clickedDiv:", clickedDiv)}
+      {/* {console.log(clicked)}
+      {console.log("currSelectedDiv:", currSelectedDiv)}
+      {console.log("clickedDiv:", clickedDiv)} */}
       <div
         className="items"
         onMouseOver={() => setIsHovering(true)}
@@ -47,16 +41,18 @@ const ShopItems = ({ shopItem }) => {
         onClick={handleClick}
       >
         <div className="itemLeft">
-          <img src={shopItem.photo} alt={shopItem.name} className="itemPhoto"/>
+          <img src={shopItem.photo} alt={shopItem.name} className="itemPhoto" />
         </div>
         <div className="itemRight">
           <div className={`itemName ${clicked ? "clickedColour" : ""}`}>
-            
+            {/* but doesnt seem to work if you re-click */}
+            {/* have to change it to span for the reds to disappear */}
             <p className="itemText">{shopItem.name}</p>
           </div>
 
           <div className={`price ${clicked ? "clickedColour" : ""}`}>
             <img src={mesos} className="mesos" alt="mesos: " />
+            {/* have to change it to span for the reds to disappear */}
             <p className="priceText">{shopItem.price} mesos</p>
             <br />
           </div>
@@ -76,5 +72,5 @@ const ShopItems = ({ shopItem }) => {
   );
 };
 
-export {clickedDiv, clickToNull};
+export { clickToNull, clickedDiv };
 export default ShopItems;
