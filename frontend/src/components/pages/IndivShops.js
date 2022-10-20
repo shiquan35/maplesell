@@ -39,6 +39,7 @@ const IndivShops = () => {
   };
 
   //want to do a check to see if user has enough money?
+  //how to put the id here?
   const handleBuy = async () => {
     let itemStatus = {
       id: clickedDiv,

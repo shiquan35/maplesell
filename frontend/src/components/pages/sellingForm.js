@@ -58,6 +58,7 @@ const SellingForm = () => {
 
   //post request
   //how to post photos?
+  //how to add id of user here?
   const handleSubmit = async (e) => {
     console.log("submit running");
     e.preventDefault();
