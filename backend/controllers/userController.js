@@ -1,9 +1,10 @@
 const BaseController = require("./baseController");
+const { Op } = require("sequelize");
 
 class UserController extends BaseController {
-  constructor(model, userModel) {
+  constructor(model, listingModel) {
     super(model);
-    this.userModel = userModel;
+    this.listingModel = listingModel;
   }
 
   // add the buyer Id to the listing - how do i get the buyerId?
@@ -24,16 +25,33 @@ class UserController extends BaseController {
   async getInventory(req, res) {
     const buyerId = req.params.buyerId;
     try {
-      console.log("retrieving user inventory");
-      if (buyerId) {
-        const output = await this.model.findAll({
-          where: {
-            bought: true,
-          },
-        });
-        return res.json(output);
-      }
-      console.log("retrieved!");
+      console.log(this.listingModel);
+      const output = await this.listingModel.findAll({
+        where: {
+          [Op.and]: [{ buyer_id: buyerId }, { bought: true }],
+        },
+      });
+      return res.json(output);
+
+      // console.log("retrieved!");
+    } catch (err) {
+      console.log(err);
+      return res.status(400).json({ error: true, msg: err });
+    }
+  }
+
+  async insertUser(req, res) {
+    const { email, password, username } = req.body;
+
+    try {
+      const newUser = await this.model.create({
+        email: email,
+        password: password,
+        username: username,
+      });
+
+      //return with res.json
+      return res.json(newUser);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
     }

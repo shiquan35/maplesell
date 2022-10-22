@@ -16,7 +16,7 @@ const { listing, category, shop, user } = db;
 
 //initializing controlers
 const listingsController = new ListingsController(listing, category, shop);
-const usersController = new UserController(user);
+const usersController = new UserController(user, listing);
 
 //initializing controllers
 const listingsRouter = new ListingsRouter(listingsController).routes();
@@ -28,13 +28,13 @@ app.use(cors());
 const { auth } = require("express-oauth2-jwt-bearer");
 
 const checkJwt = auth({
-   audience: "https://maplesell/api",
-   issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
- });
+  audience: "https://maplesell/api",
+  issuerBaseURL: `https://dev-hmluigxe.us.auth0.com`,
+});
 
- app.get("/", checkJwt, (req, res) => {
-   res.send("Hello, World!");
- });
+app.get("/", checkJwt, (req, res) => {
+  res.send("Hello, World!");
+});
 
 //enable reading JSON request bodies
 app.use(express.json());
