@@ -16,7 +16,7 @@ root.render(
       audience="https://dev-hmluigxe.us.auth0.com/api/v2/"
       scope="read:current_user update:current_user_metadata"
     >
-      {/* <App /> */}
+      <App />
       <Router />
     </Auth0Provider>
   </BrowserRouter>
