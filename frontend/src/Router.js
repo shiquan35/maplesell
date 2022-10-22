@@ -5,6 +5,7 @@ import Homepage from "./components/pages/homepage";
 import IndivShops from "./components/pages/IndivShops";
 import Nothing from "./components/pages/Nothing";
 import SellingForm from "./components/pages/sellingForm";
+import ProfilePage from "./components/profilePage";
 
 const Router = () => {
   return (
@@ -13,6 +14,7 @@ const Router = () => {
       <Route path="/home" element=<Homepage /> />
       <Route path="/home/:shopId" element=<IndivShops /> />
       <Route path="/new" element=<SellingForm /> />
+      <Route path="/user/:buyerId" element=<ProfilePage /> />
       <Route path="*" element=<Nothing /> />
     </Routes>
   );
