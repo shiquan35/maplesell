@@ -69,11 +69,11 @@ const Auth = () => {
     }
 
     return (
-      // isAuthenticated && (
-      <div>
-        <span>Welcome {user.nickname}</span>
-      </div>
-      // )
+      isAuthenticated && (
+        <div>
+          <span>Welcome {user.nickname}</span>
+        </div>
+      )
     );
   }
 };
