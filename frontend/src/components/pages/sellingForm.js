@@ -10,10 +10,11 @@ const SellingForm = () => {
   const [categoryName, setCategoryName] = useState([]);
   const [shop, setShop] = useState([{}]);
   const [category, setCategory] = useState([]);
-
-  const nameRef = useRef();
-  const priceRef = useRef();
-  const descriptionRef = useRef();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState();
+  const [description, setDescription] = useState("");
+  const [inputFile, setInputFile] = useState(null);
+  const [inputValue, setInputValue] = useState("");
 
   //creating the select options for both shops and category
   let apiCalls = [
@@ -56,6 +57,25 @@ const SellingForm = () => {
     setShop([e]);
   };
 
+  const handlePhotoUpload = (e) => {
+    setInputFile(e.target.files[0]);
+    setInputValue(e.target.value);
+  };
+
+  console.log(inputFile);
+
+  const handleListingName = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleListingPrice = (e) => {
+    setPrice(e.target.value);
+  };
+
+  const handleListingDescription = (e) => {
+    setDescription(e.target.value);
+  };
+
   //post request
   //how to post photos?
   //how to add id of user here?
@@ -68,11 +88,12 @@ const SellingForm = () => {
     const selectedShopId = shop.map(({ value }) => value);
 
     let userInput = {
-      name: nameRef.current.value,
-      price: priceRef.current.value,
-      description: descriptionRef.current.value,
+      name: name,
+      price: price,
+      description: description,
       category_id: selectedCategoryId,
       shop_id: selectedShopId,
+      // how to add the photo in here?
     };
 
     console.log(userInput);
@@ -101,9 +122,12 @@ const SellingForm = () => {
             <form className="formFonts" onSubmit={handleSubmit}>
               <h2>Selling Form</h2>
               <SellForm
-                nameRef={nameRef}
-                priceRef={priceRef}
-                descriptionRef={descriptionRef}
+                name={name}
+                price={price}
+                description={description}
+                handleListingName={handleListingName}
+                handleListingPrice={handleListingPrice}
+                handleListingDescription={handleListingDescription}
               />
               <br />
               <label>Class:</label>
@@ -118,7 +142,13 @@ const SellingForm = () => {
                 onChange={handleCategorySelect}
                 value={category}
               />
-
+              <br />
+              <label>Photo:</label>
+              <input
+                type="file"
+                value={inputValue}
+                onChange={handlePhotoUpload}
+              />
               <br />
               <input className="shopButton" type="submit" value="SELL!" />
             </form>

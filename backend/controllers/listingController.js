@@ -64,7 +64,7 @@ class ListingController extends BaseController {
 
   // allowing users to add their own listings
   async insertOne(req, res) {
-    const { name, price, description, category_id, shop_id } = req.body;
+    const { name, price, description, category_id, shop_id, photo } = req.body;
 
     try {
       const newListing = await this.model.create({
@@ -73,10 +73,8 @@ class ListingController extends BaseController {
         description: description,
         category_id: category_id,
         shop_id: shop_id,
+        photo: photo,
       });
-
-      console.log(category_id);
-      console.log(shop_id);
 
       //return with res.json
       return res.json(newListing);

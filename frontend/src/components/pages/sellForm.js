@@ -2,21 +2,38 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
 
-const SellForm = ({ nameRef, priceRef, descriptionRef }) => {
+const SellForm = ({
+  name,
+  price,
+  description,
+  handleListingName,
+  handleListingPrice,
+  handleListingDescription,
+}) => {
   return (
     <Grid container spacing={1}>
       <Grid item xs={3}>
         <label>Name:</label>
       </Grid>
       <Grid item xs={7}>
-        <TextField inputref={nameRef} variant="standard" required />
+        <TextField
+          value={name}
+          onChange={handleListingName}
+          variant="standard"
+          required
+        />
       </Grid>
       <br />
       <Grid item xs={3}>
         <label>Price:</label>
       </Grid>
       <Grid item xs={7}>
-        <TextField inputref={priceRef} variant="standard" required />
+        <TextField
+          value={price}
+          onChange={handleListingPrice}
+          variant="standard"
+          required
+        />
       </Grid>
       <br />
       <Grid item xs={3}>
@@ -24,7 +41,8 @@ const SellForm = ({ nameRef, priceRef, descriptionRef }) => {
       </Grid>
       <Grid item xs={7}>
         <TextField
-          inputref={descriptionRef}
+          value={description}
+          onChange={handleListingDescription}
           variant="standard"
           multiline
           required
