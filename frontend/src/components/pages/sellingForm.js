@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,6 @@ const SellingForm = () => {
   const [price, setPrice] = useState();
   const [description, setDescription] = useState("");
   const [inputFile, setInputFile] = useState(null);
-  const [inputValue, setInputValue] = useState("");
 
   //creating the select options for both shops and category
   let apiCalls = [
@@ -59,7 +58,6 @@ const SellingForm = () => {
 
   const handlePhotoUpload = (e) => {
     setInputFile(e.target.files[0]);
-    setInputValue(e.target.value);
   };
 
   console.log(inputFile);
@@ -76,9 +74,6 @@ const SellingForm = () => {
     setDescription(e.target.value);
   };
 
-  //post request
-  //how to post photos?
-  //how to add id of user here?
   const handleSubmit = async (e) => {
     console.log("submit running");
     e.preventDefault();
@@ -87,20 +82,18 @@ const SellingForm = () => {
     const selectedCategoryId = category.map(({ value }) => value);
     const selectedShopId = shop.map(({ value }) => value);
 
-    let userInput = {
-      name: name,
-      price: price,
-      description: description,
-      category_id: selectedCategoryId,
-      shop_id: selectedShopId,
-      // how to add the photo in here?
-    };
-
-    console.log(userInput);
+    // just for the photo upload
+    const formData = new FormData();
+    formData.append("photo", inputFile);
+    formData.append("name", name);
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("category_id", selectedCategoryId);
+    formData.append("shop_id", selectedShopId);
 
     await axios
-      .post("http://localhost:3000/home", userInput)
-      .then((res) => console.log("Posted", res))
+      .post("http://localhost:3000/home", formData)
+      .then((res) => console.log(formData, res))
       .catch((err) => console.log(err));
     e.target.reset();
     navigate("/home");
@@ -134,21 +127,19 @@ const SellingForm = () => {
               <Select
                 options={shopNameOptions}
                 onChange={handleShopSelect}
+                name="shop_id"
                 value={shop}
               />
               <label>Category:</label>
               <Select
                 options={categoryNameOptions}
+                name="category_id"
                 onChange={handleCategorySelect}
                 value={category}
               />
               <br />
               <label>Photo:</label>
-              <input
-                type="file"
-                value={inputValue}
-                onChange={handlePhotoUpload}
-              />
+              <input type="file" name="photo" onChange={handlePhotoUpload} />
               <br />
               <input className="shopButton" type="submit" value="SELL!" />
             </form>

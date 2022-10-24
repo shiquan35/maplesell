@@ -18,6 +18,7 @@ const SellForm = ({
       <Grid item xs={7}>
         <TextField
           value={name}
+          name="name"
           onChange={handleListingName}
           variant="standard"
           required
@@ -30,6 +31,7 @@ const SellForm = ({
       <Grid item xs={7}>
         <TextField
           value={price}
+          name="price"
           onChange={handleListingPrice}
           variant="standard"
           required
@@ -42,6 +44,7 @@ const SellForm = ({
       <Grid item xs={7}>
         <TextField
           value={description}
+          name="description"
           onChange={handleListingDescription}
           variant="standard"
           multiline

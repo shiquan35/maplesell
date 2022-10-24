@@ -13,6 +13,15 @@ const ShopItems = ({ shopItem }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [clicked, setClicked] = useState(false); //if true, change colour
 
+  // if img path is without http, attach it before showing the photowwww
+  const imageUrl = () => {
+    if (shopItem.photo.startsWith("http")) {
+      return shopItem.photo;
+    } else {
+      return `http://localhost:3000/${shopItem.photo}`;
+    }
+  };
+
   const handleClick = () => {
     clickedDiv = shopItem.id;
 
@@ -31,9 +40,6 @@ const ShopItems = ({ shopItem }) => {
 
   return (
     <>
-      {/* {console.log(clicked)}
-      {console.log("currSelectedDiv:", currSelectedDiv)}
-      {console.log("clickedDiv:", clickedDiv)} */}
       <div
         className="items"
         onMouseOver={() => setIsHovering(true)}
@@ -41,7 +47,7 @@ const ShopItems = ({ shopItem }) => {
         onClick={handleClick}
       >
         <div className="itemLeft">
-          <img src={shopItem.photo} alt={shopItem.name} className="itemPhoto" />
+          <img src={imageUrl()} alt={shopItem.name} className="itemPhoto" />
         </div>
         <div className="itemRight">
           <div className={`itemName ${clicked ? "clickedColour" : ""}`}>
@@ -62,7 +68,7 @@ const ShopItems = ({ shopItem }) => {
       {isHovering && (
         <div className="itemDisplay">
           <>
-            <img src={shopItem.photo} alt={shopItem.name} />
+            <img src={imageUrl()} alt={shopItem.name} />
             <p>{shopItem.name}</p>
           </>
           <p>{shopItem.description}</p>

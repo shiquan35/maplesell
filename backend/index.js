@@ -11,6 +11,8 @@ const CategoriesRouter = require("./routers/categoryRouter");
 const ListingsController = require("./controllers/listingController");
 const UserController = require("./controllers/userController");
 const CategoryController = require("./controllers/categoryController");
+// uploading the photos with their controller...
+const UploadFormController = require("./controllers/uploadFormContoller");
 
 //importing DB
 const db = require("./db/models/index");
@@ -47,6 +49,11 @@ app.use(express.json());
 app.use("/home", listingsRouter);
 app.use("/user", usersRouter);
 app.use("/category", categoriesRouter);
+
+// to obtain photos from the localhost folder
+app.use("/uploadedImg", express.static("./uploadedImg"));
+
+app.post("/home", UploadFormController.upload, UploadFormController.insertOne);
 
 app.listen(PORT, () => {
   console.log(`Express app listening on port ${PORT}!`);
