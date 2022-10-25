@@ -1,8 +1,9 @@
 import LoginButton from "./loginButton";
 import LogoutButton from "./logoutButton";
-import Auth from "./auth";
-import mushroom from "./mushroom.gif";
-import mapleaudio from "./mapleaudio.mp3";
+// import Profile from "./profile";
+
+import mushroom from "../img/mushroom.gif";
+import mapleaudio from "../audio/mapleaudio.mp3";
 import "./loginPage.css";
 
 function LoginPage() {
@@ -11,7 +12,6 @@ function LoginPage() {
       <img src={mushroom} className="mushroom" alt="loading..." />
       <LoginButton />
       <LogoutButton />
-      <Auth />
       <audio src={mapleaudio} controls className="music">
         <embed src={mapleaudio} autostart="true" width="300" height="90" />
       </audio>

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import Router from "./Router";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
@@ -16,7 +15,6 @@ root.render(
       audience="https://dev-hmluigxe.us.auth0.com/api/v2/"
       scope="read:current_user update:current_user_metadata"
     >
-      <App />
       <Router />
     </Auth0Provider>
   </BrowserRouter>

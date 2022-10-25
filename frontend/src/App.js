@@ -1,5 +1,6 @@
 import "./App.css";
-import LoginPage from "./components/loginPage";
+import LoginPage from "./components/authentication/loginPage";
+import Auth from "./components/auth";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         </audio> */}
       {/* </header> */}
       <LoginPage />
+      <Auth />
     </div>
   );
 }
