@@ -43,16 +43,18 @@ class ListingController extends BaseController {
   }
 
   async soldOne(req, res) {
-    const { id, bought } = req.body;
+    const { id, bought, buyer_id } = req.body;
+    console.log(req.body);
     try {
       const output = await this.model.update(
-        { bought: bought },
+        { buyer_id: buyer_id, bought: bought },
         {
           where: {
             id: id,
           },
         }
       );
+      await output.save();
       return res.json(output);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });

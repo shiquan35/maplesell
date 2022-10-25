@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import { ShopsContext } from "./homepage";
 import { useNavigate } from "react-router-dom";
+import { indexId } from "../auth";
+import { useParams } from "react-router-dom";
 
 const AllShops = () => {
   const navigate = useNavigate();
+  let { userId } = useParams();
 
   const { shops } = useContext(ShopsContext);
   const shopNames = [];
@@ -94,6 +97,13 @@ const AllShops = () => {
         >
           <h3>{shopNames[8]}</h3>
         </div>
+        <button
+          onClick={() => {
+            navigate(`/user/${indexId + 1}`);
+          }}
+        >
+          My profile
+        </button>
       </div>
     </>
   );

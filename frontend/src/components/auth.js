@@ -1,11 +1,15 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 let currentUserId;
 let userInventory;
+let indexId;
+let currentUserName;
 
 const Auth = () => {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const navigate = useNavigate();
 
   const [allUsers, setAllUsers] = useState([]);
   // const [userInventory, setUserInventory] = useState([]);
@@ -28,21 +32,29 @@ const Auth = () => {
   console.log(isAuthenticated);
   console.log(allUsers);
 
-  const allUserIds = [];
+  const allUserEmails = [];
   for (let i = 0; i < allUsers.length; i++) {
-    let userId = String(allUsers[i].id);
-    allUserIds.push(userId);
+    let userEmail = String(allUsers[i].email);
+    allUserEmails.push(userEmail);
   }
 
   if (isAuthenticated) {
     // for (let i = 0; i < allUsers.length; i++) {
-    if (allUserIds.includes(user.id)) {
+    if (allUserEmails.includes(user.email)) {
+      indexId = Number(allUserEmails.indexOf(user.email));
       console.log("user exists");
-      console.log(user.id);
-      currentUserId = user.id;
-      console.log(currentUserId);
+      navigate(`/home`);
+
+      console.log(allUsers);
+      console.log(allUsers[1].id);
+      console.log(indexId);
+      // console.log(allUsers[indexId].username);
+      console.log(allUsers[indexId].username);
+      currentUserName = allUsers[indexId].username;
+      // currentUserId = user.id;
+      // console.log(currentUserId);
       axios
-        .get(`http://localhost:3000/user/${currentUserId}`)
+        .get(`http://localhost:3000/user/${indexId - 1}`)
         .then((res) => {
           // setUserInventory(res.data);
           userInventory = res.data;
@@ -51,14 +63,16 @@ const Auth = () => {
           console.log("user's inventory");
         })
         .catch((err) => console.log(err));
-    } else if (!allUserIds.includes(user.id)) {
+    } else if (!allUserEmails.includes(user.id)) {
       console.log("user does not exists");
       console.log(user.id);
+      console.log(user);
+      console.log(user.username);
       axios
         .post("http://localhost:3000/user", {
           email: user.email,
           password: user.password,
-          username: user.username,
+          username: user.nickname,
         })
         .then((res) => {
           console.log(res.data);
@@ -79,4 +93,4 @@ const Auth = () => {
 };
 
 export default Auth;
-export { userInventory, currentUserId };
+export { userInventory, currentUserId, indexId, currentUserName };
