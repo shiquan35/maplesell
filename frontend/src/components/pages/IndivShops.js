@@ -6,6 +6,7 @@ import { clickToNull, clickedDiv } from "./ShopItems";
 import mesos from "../img/mesos.png";
 import employee from "../img/employee.png";
 import BuyDialog from "./buyDialog";
+import { indexId } from "../auth";
 
 const IndivShops = () => {
   const [buyingPopup, setBuyingPopup] = useState(false);
@@ -44,13 +45,14 @@ const IndivShops = () => {
     let itemStatus = {
       id: clickedDiv,
       bought: true,
+      buyer_id: indexId + 1,
       //use auth0 hook to get userId? or possible to pass the id here?
       //buyer_id:
     };
 
     await axios
       .put(`http://localhost:3000/home/${shopId}`, itemStatus)
-      .then((res) => console.log("Posted", res))
+      .then((res) => console.log("Posted", res, itemStatus))
       .catch((err) => console.log(err));
     navigate(`/home`);
     alert("Item bought! congrats!");
