@@ -47,13 +47,14 @@ class ListingController extends BaseController {
     console.log(req.body);
     try {
       const output = await this.model.update(
-        { buyer_id: 8, bought: bought },
+        { buyer_id: buyer_id, bought: bought },
         {
           where: {
             id: id,
           },
         }
       );
+      await output.save();
       return res.json(output);
     } catch (err) {
       return res.status(400).json({ error: true, msg: err });
