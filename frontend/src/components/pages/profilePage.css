@@ -1,0 +1,29 @@
+.profilePage {
+  /* margin-left: 30px; */
+  opacity: 0.85;
+  background-color: rgb(86, 80, 132);
+  width: 500px;
+  margin: 10px;
+}
+
+.homeContainerProfile {
+  background-image: url("../img/profilePageBackground.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  bottom: 25px;
+  height: 800px;
+}
+
+.shopButton {
+  background-image: linear-gradient(rgb(207, 126, 61), rgb(222, 166, 133));
+  text-align: center;
+  width: 150px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgb(255, 222, 169);
+  margin: 2px;
+}
+
+.userName {
+  margin: 0;
+}

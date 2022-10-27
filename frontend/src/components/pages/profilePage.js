@@ -1,4 +1,4 @@
-import { currentUserId, indexId, currentUserName } from "./auth";
+import { currentUserId, indexId, currentUserName } from "../auth";
 // import { useAuth0 } from "@auth0/auth0-react";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -28,29 +28,34 @@ const ProfilePage = () => {
   const userInventoryFunction = userInventory.map((inventory) => {
     return (
       <>
-      <div className="profilePage">
-        <img src={inventory.photo} alt={inventory.name} className="itemPhoto" />
-        <div>{inventory.name}</div>
-        <br />
-        {/* <div>{inventory.price}</div> */}
-        <div>{inventory.description}</div>
-      </div>  
+        <div className="profilePage">
+          <img
+            src={inventory.photo}
+            alt={inventory.name}
+            className="itemPhoto"
+          />
+          <div>{inventory.name}</div>
+          <br />
+          {/* <div>{inventory.price}</div> */}
+          <div>{inventory.description}</div>
+        </div>
       </>
     );
   });
   // return <> test </>;
   return (
-    <>
+    <div className="homeContainerProfile">
       <h2>{currentUserName}'s inventory</h2>
       {userInventoryFunction}
       <button
+        className="shopButton"
         onClick={() => {
           navigate(`/home`);
         }}
       >
         Back
       </button>
-    </>
+    </div>
   );
 };
 export default ProfilePage;

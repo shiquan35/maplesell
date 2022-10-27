@@ -36,6 +36,7 @@ const insertOne = async (req, res) => {
     category_id: req.body.category_id,
     shop_id: req.body.shop_id,
     photo: req.file.path,
+    seller_id: req.body.seller_id,
   });
   console.log(newListing);
   return res.json(newListing);

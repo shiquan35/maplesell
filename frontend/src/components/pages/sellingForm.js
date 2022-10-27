@@ -3,6 +3,7 @@ import axios from "axios";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 import SellForm from "./sellForm";
+import { indexId } from "../auth";
 
 const SellingForm = () => {
   const navigate = useNavigate();
@@ -90,6 +91,7 @@ const SellingForm = () => {
     formData.append("description", description);
     formData.append("category_id", selectedCategoryId);
     formData.append("shop_id", selectedShopId);
+    formData.append("seller_id", indexId + 1);
 
     await axios
       .post("http://localhost:3000/home", formData)

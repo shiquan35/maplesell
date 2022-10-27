@@ -10,8 +10,6 @@ class UserController extends BaseController {
   async getInventory(req, res) {
     const buyerId = req.params.buyerId;
     try {
-      console.log(buyerId);
-      console.log("hello1");
       const output = await this.listingModel.findAll({
         where: {
           [Op.and]: [{ buyer_id: buyerId }, { bought: true }],

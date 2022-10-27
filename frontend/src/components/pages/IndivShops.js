@@ -6,7 +6,7 @@ import { clickToNull, clickedDiv } from "./ShopItems";
 import mesos from "../img/mesos.png";
 import employee from "../img/employee.png";
 import BuyDialog from "./buyDialog";
-import { indexId } from "../auth";
+import { indexId, currentUserName } from "../auth";
 import UserItems from "./UserItems";
 
 const IndivShops = () => {
@@ -62,8 +62,6 @@ const IndivShops = () => {
       id: clickedDiv,
       bought: true,
       buyer_id: indexId + 1,
-      //use auth0 hook to get userId? or possible to pass the id here?
-      //buyer_id:
     };
 
     await axios
@@ -132,8 +130,7 @@ const IndivShops = () => {
             {/* items below are hard coded just to test design and scrollbar function */}
             <div>
               <div className="topContainer">
-                <img src={mesos} className="mesos" alt="mesos: " />
-                1,000,000,000
+                <h2 className="userName">{currentUserName} Inventory</h2>
               </div>
               <div className="userItems">{userItems}</div>
             </div>
