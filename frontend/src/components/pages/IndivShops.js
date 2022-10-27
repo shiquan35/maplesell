@@ -7,10 +7,12 @@ import mesos from "../img/mesos.png";
 import employee from "../img/employee.png";
 import BuyDialog from "./buyDialog";
 import { indexId } from "../auth";
+import UserItems from "./UserItems";
 
 const IndivShops = () => {
   const [buyingPopup, setBuyingPopup] = useState(false);
   const [indivShops, setIndivShops] = useState([]);
+  const [userInventory, setUserInventory] = useState([]);
   let { shopId } = useParams();
   const navigate = useNavigate();
 
@@ -24,8 +26,22 @@ const IndivShops = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:3000/user/${indexId + 1}`)
+      .then((res) => {
+        setUserInventory(res.data);
+        console.log(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   const shopItems = indivShops.map((shopItem, i) => {
     return <ShopItems shopItem={shopItem} key={i + 1} />;
+  });
+
+  const userItems = userInventory.map((userItem, i) => {
+    return <UserItems shopItem={userItem} key={i + 1} />;
   });
 
   const handleBuyingConfirmation = () => {
@@ -119,44 +135,7 @@ const IndivShops = () => {
                 <img src={mesos} className="mesos" alt="mesos: " />
                 1,000,000,000
               </div>
-              <div className="userItems">
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 78</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 89</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 1</div>
-                <div>Item 99</div>
-              </div>
+              <div className="userItems">{userItems}</div>
             </div>
           </div>
         </div>
