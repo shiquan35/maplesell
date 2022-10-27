@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./profilePage.css";
 
 const ProfilePage = () => {
   // const { isAuthenticated } = useAuth0();
@@ -27,9 +28,13 @@ const ProfilePage = () => {
   const userInventoryFunction = userInventory.map((inventory) => {
     return (
       <>
+      <div className="profilePage">
+        <img src={inventory.photo} alt={inventory.name} className="itemPhoto" />
         <div>{inventory.name}</div>
-        <div>{inventory.price}</div>
+        <br />
+        {/* <div>{inventory.price}</div> */}
         <div>{inventory.description}</div>
+      </div>  
       </>
     );
   });
