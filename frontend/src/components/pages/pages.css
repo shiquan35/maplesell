@@ -127,7 +127,7 @@ h3 {
 }
 
 .userDiv {
-  background-color: rgb(99, 3, 3);
+  background-color: beige;
   margin: 10px;
   width: 350px;
   height: 500px;
@@ -139,7 +139,6 @@ h3 {
   height: 420px;
   overflow-y: scroll;
   white-space: normal;
-  /* overflow: scroll; */
 }
 
 .items {
@@ -149,7 +148,7 @@ h3 {
 .itemPhoto {
   height: 60px;
   width: 60px;
-  background-color: rgb(226, 224, 213);
+  background-color: rgb(206, 206, 191);
 }
 
 .itemLeft {
