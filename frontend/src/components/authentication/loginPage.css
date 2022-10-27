@@ -5,7 +5,7 @@
   height: 180px;
 }
 
-.music {
+#loginAudio {
   position: relative;
   top: 500px;
   left: 200px;
@@ -18,11 +18,5 @@
   background-repeat: no-repeat;
   background-size: cover;
   height: 790px;
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white; */
   cursor: url("https://cur.cursors-4u.net/games/gam-4/gam308.cur"), default !important;
 }

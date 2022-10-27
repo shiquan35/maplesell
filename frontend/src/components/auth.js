@@ -12,7 +12,6 @@ const Auth = () => {
   const navigate = useNavigate();
 
   const [allUsers, setAllUsers] = useState([]);
-  // const [userInventory, setUserInventory] = useState([]);
 
   useEffect(() => {
     axios
@@ -28,10 +27,6 @@ const Auth = () => {
     return <div>Loading ...</div>;
   }
 
-  console.log(user);
-  console.log(isAuthenticated);
-  console.log(allUsers);
-
   const allUserEmails = [];
   for (let i = 0; i < allUsers.length; i++) {
     let userEmail = String(allUsers[i].email);
@@ -39,35 +34,20 @@ const Auth = () => {
   }
 
   if (isAuthenticated) {
-    // for (let i = 0; i < allUsers.length; i++) {
     if (allUserEmails.includes(user.email)) {
       indexId = Number(allUserEmails.indexOf(user.email));
-      console.log("user exists");
+
       navigate(`/home`);
 
-      console.log(allUsers);
-      console.log(allUsers[1].id);
-      console.log(indexId);
-      // console.log(allUsers[indexId].username);
-      console.log(allUsers[indexId].username);
       currentUserName = allUsers[indexId].username;
-      // currentUserId = user.id;
-      // console.log(currentUserId);
+
       axios
         .get(`http://localhost:3000/user/${indexId - 1}`)
         .then((res) => {
-          // setUserInventory(res.data);
           userInventory = res.data;
-          console.log(res.data);
-          //create userdata = res.data, pass this as props to router
-          console.log("user's inventory");
         })
         .catch((err) => console.log(err));
     } else if (!allUserEmails.includes(user.id)) {
-      console.log("user does not exists");
-      console.log(user.id);
-      console.log(user);
-      console.log(user.username);
       axios
         .post("http://localhost:3000/user", {
           email: user.email,
@@ -76,7 +56,6 @@ const Auth = () => {
         })
         .then((res) => {
           console.log(res.data);
-          console.log("user has been added");
         })
         .catch((err) => console.log(err));
       // }

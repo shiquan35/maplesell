@@ -38,6 +38,9 @@ const ShopItems = ({ shopItem }) => {
     setClicked(!clicked);
   };
 
+  console.log({ currSelectedDiv });
+  console.log({ clickedDiv });
+
   return (
     <>
       <div
@@ -78,5 +81,5 @@ const ShopItems = ({ shopItem }) => {
   );
 };
 
-export { clickToNull, clickedDiv };
+export { clickToNull, clickedDiv, currSelectedDiv };
 export default ShopItems;

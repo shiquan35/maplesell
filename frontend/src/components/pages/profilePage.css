@@ -4,6 +4,8 @@
   background-color: rgb(86, 80, 132);
   width: 500px;
   margin: 10px;
+  color: white;
+  border-radius: 8px;
 }
 
 .homeContainerProfile {

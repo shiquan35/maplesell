@@ -219,7 +219,7 @@ p {
   justify-content: center;
   position: absolute;
   right: 105%;
-  bottom: 195%;
+  bottom: 175%;
   background-color: rgb(222, 166, 133);
   border: 5px solid rgb(175, 112, 45);
   border-radius: 8px;
@@ -227,4 +227,19 @@ p {
   font-weight: bold;
   font-size: 1.3em;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.userNameContainer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 400px;
+  right: 90%;
+  bottom: 200%;
+  /* background-color: rgb(222, 166, 133);
+  border: 5px solid rgb(175, 112, 45); */
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
 }

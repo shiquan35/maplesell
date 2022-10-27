@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ShopItems from "./ShopItems";
-import { clickToNull, clickedDiv } from "./ShopItems";
-import mesos from "../img/mesos.png";
+import { clickToNull, currSelectedDiv } from "./ShopItems";
 import employee from "../img/employee.png";
 import BuyDialog from "./buyDialog";
 import { indexId, currentUserName } from "../auth";
@@ -45,21 +44,21 @@ const IndivShops = () => {
   });
 
   const handleBuyingConfirmation = () => {
-    console.log({ clickedDiv });
     setBuyingPopup(true);
   };
 
   const handleClose = () => {
     setBuyingPopup(false);
-    // apparently window reload didnt do anything?
-    window.reload();
   };
 
-  //want to do a check to see if user has enough money?
-  //how to put the id here?
   const handleBuy = async () => {
+    if (currSelectedDiv == null) {
+      alert("You havent clicked on anything!");
+      return;
+    }
+
     let itemStatus = {
-      id: clickedDiv,
+      id: currSelectedDiv,
       bought: true,
       buyer_id: indexId + 1,
     };

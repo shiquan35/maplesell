@@ -7,9 +7,11 @@ const LogoutButton = (event) => {
 
   return (
     <button
-      className="logoutButton"
+      className="logoutButtonInHomePage"
       onClick={() => logout({ returnTo: window.location.origin })}
-    ></button>
+    >
+      Log Out
+    </button>
   );
 };
 
