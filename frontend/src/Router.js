@@ -5,7 +5,7 @@ import Homepage from "./components/pages/homepage";
 import IndivShops from "./components/pages/IndivShops";
 import Nothing from "./components/pages/Nothing";
 import SellingForm from "./components/pages/sellingForm";
-import ProfilePage from "./components/profilePage";
+import ProfilePage from "./components/pages/profilePage";
 
 const Router = () => {
   return (
