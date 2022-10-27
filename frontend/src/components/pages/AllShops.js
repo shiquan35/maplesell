@@ -101,8 +101,9 @@ const AllShops = () => {
           onClick={() => {
             navigate(`/user/${indexId + 1}`);
           }}
+          className="profileButton"
         >
-          My profile
+          My Inventory
         </button>
       </div>
     </>
