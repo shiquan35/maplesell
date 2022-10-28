@@ -4,6 +4,8 @@
   background-size: cover;
   position: relative;
   height: 900px;
+  bottom: 30px;
+  /* z-index: -1; */
 }
 
 .storeImg {
@@ -242,4 +244,18 @@ p {
   text-align: center;
   font-weight: bold;
   font-size: 1.3em;
+}
+
+.homepagePlayMusic {
+  position: relative;
+  top: 30px;
+  left: 50px;
+  z-index: 1;
+}
+
+.homepageStopMusic {
+  position: relative;
+  top: 30px;
+  left: 60px;
+  z-index: 1;
 }

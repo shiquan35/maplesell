@@ -1,15 +1,18 @@
 import "./App.css";
 import LoginPage from "./components/authentication/loginPage";
 import Auth from "./components/auth";
+import mapleaudio from "./components/audio/mapleaudio.mp3";
 
 function App() {
   return (
     <div>
-      {/* <header className="App-header"> */}
-      {/* <audio src={mapleaudio} controls className="music">
-          <embed src={mapleaudio} autostart="true" width="300" height="90" />
-        </audio> */}
-      {/* </header> */}
+      <iframe
+        src={mapleaudio}
+        allow="autoplay"
+        id="loginAudio"
+        hidden
+        title="loginAudio Sound"
+      ></iframe>
       <LoginPage />
       <Auth />
     </div>
