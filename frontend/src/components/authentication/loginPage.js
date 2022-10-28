@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import LoginButton from "./loginButton";
+import LogoutButton from "./logoutButton";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 
@@ -30,6 +31,7 @@ function LoginPage() {
       ></iframe>
       <img src={mushroom} className="mushroom" alt="loading..." />
       <LoginButton />
+      <LogoutButton />
     </div>
   );
 }
