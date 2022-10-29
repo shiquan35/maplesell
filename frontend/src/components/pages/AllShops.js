@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { ShopsContext } from "./homepage";
 import { useNavigate } from "react-router-dom";
 import { indexId, currentUserName } from "../auth";
-import LogoutButton from "../authentication/logoutButton";
+import LogoutButtonInHomePage from "../authentication/logoutButtonHomePage";
 
 const AllShops = () => {
   const navigate = useNavigate();
@@ -108,7 +108,7 @@ const AllShops = () => {
           >
             My Inventory
           </button>
-          <LogoutButton />
+          <LogoutButtonInHomePage />
         </div>
       </div>
     </>
