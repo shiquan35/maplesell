@@ -1,0 +1,26 @@
+.logoutButton {
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  height: 100px;
+  width: 520px;
+  position: relative;
+  right: 80px;
+  top: 500px;
+}
+
+.logoutButtonInHomePage {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 120px;
+  right: 105%;
+  bottom: 160%;
+  background-color: rgb(222, 166, 133);
+  border: 5px solid rgb(175, 112, 45);
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3em;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}

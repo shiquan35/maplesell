@@ -1,22 +1,25 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import Router from "./Router";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
+
+const DOMAIN = process.env.REACT_APP_AUTH_DOMAIN;
+const CLIENTID = process.env.REACT_APP_CLIENT_ID;
+const AUDIENCE = process.env.REACT_APP_AUDIENCE;
+const SCOPE = process.env.REACT_APP_SCOPE;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <Auth0Provider
-      domain="dev-hmluigxe.us.auth0.com"
-      clientId="6r5zyVayFEe8R0sCMN2NfPoCLTxWOctq"
+      domain={DOMAIN}
+      clientId={CLIENTID}
       redirectUri={window.location.origin}
-      audience="https://dev-hmluigxe.us.auth0.com/api/v2/"
-      scope="read:current_user update:current_user_metadata"
+      audience={AUDIENCE}
+      scope={SCOPE}
     >
-      {/* <App /> */}
       <Router />
     </Auth0Provider>
   </BrowserRouter>

@@ -1,0 +1,26 @@
+.mushroom {
+  position: relative;
+  left: 850px;
+  top: 180px;
+  height: 180px;
+}
+
+.playButton {
+  position: relative;
+  top: 380px;
+  left: 870px;
+}
+
+.stopButton {
+  position: relative;
+  top: 380px;
+  left: 880px;
+}
+
+.header {
+  background-image: url("../img/background2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 790px;
+  cursor: url("https://cur.cursors-4u.net/games/gam-4/gam308.cur"), default !important;
+}
